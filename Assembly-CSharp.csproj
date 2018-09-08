@@ -61,27 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\_Complete-Game\MobileInput\Scripts\CrossPlatformInputManager.cs" />
-    <Compile Include="Assets\_Complete-Game\MobileInput\Scripts\Joystick.cs" />
-    <Compile Include="Assets\_Complete-Game\MobileInput\Scripts\MobileControlRig.cs" />
-    <Compile Include="Assets\_Complete-Game\MobileInput\Scripts\PlatformSpecific\MobileInput.cs" />
-    <Compile Include="Assets\_Complete-Game\MobileInput\Scripts\PlatformSpecific\StandaloneInput.cs" />
-    <Compile Include="Assets\_Complete-Game\MobileInput\Scripts\VirtualInput.cs" />
-    <Compile Include="Assets\_Complete-Game\Scripts\Audio\MixLevels.cs" />
-    <Compile Include="Assets\_Complete-Game\Scripts\Camera\CameraFollow.cs" />
-    <Compile Include="Assets\_Complete-Game\Scripts\Enemy\EnemyAttack.cs" />
-    <Compile Include="Assets\_Complete-Game\Scripts\Enemy\EnemyHealth.cs" />
-    <Compile Include="Assets\_Complete-Game\Scripts\Enemy\EnemyMovement.cs" />
-    <Compile Include="Assets\_Complete-Game\Scripts\Helpers\RandomAnimationPoint.cs" />
-    <Compile Include="Assets\_Complete-Game\Scripts\Helpers\RandomParticlePoint.cs" />
-    <Compile Include="Assets\_Complete-Game\Scripts\Helpers\VolumeHandler.cs" />
-    <Compile Include="Assets\_Complete-Game\Scripts\Managers\EnemyManager.cs" />
-    <Compile Include="Assets\_Complete-Game\Scripts\Managers\GameOverManager.cs" />
-    <Compile Include="Assets\_Complete-Game\Scripts\Managers\PauseManager.cs" />
-    <Compile Include="Assets\_Complete-Game\Scripts\Managers\ScoreManager.cs" />
-    <Compile Include="Assets\_Complete-Game\Scripts\Player\PlayerHealth.cs" />
-    <Compile Include="Assets\_Complete-Game\Scripts\Player\PlayerMovement.cs" />
-    <Compile Include="Assets\_Complete-Game\Scripts\Player\PlayerShooting.cs" />
+    <Compile Include="Assets\MobilityArts\SciFiHandGun\Scripts\OrbitAroundTarget.cs" />
     <Compile Include="Assets\Models\Environment\Free_Rocks\Standard Assets\Effects\ImageEffects\Scripts\Antialiasing.cs" />
     <Compile Include="Assets\Models\Environment\Free_Rocks\Standard Assets\Effects\ImageEffects\Scripts\Bloom.cs" />
     <Compile Include="Assets\Models\Environment\Free_Rocks\Standard Assets\Effects\ImageEffects\Scripts\BloomAndFlares.cs" />
@@ -120,6 +100,13 @@
     <Compile Include="Assets\Models\Environment\Free_Rocks\Standard Assets\Effects\ImageEffects\Scripts\Twirl.cs" />
     <Compile Include="Assets\Models\Environment\Free_Rocks\Standard Assets\Effects\ImageEffects\Scripts\VignetteAndChromaticAberration.cs" />
     <Compile Include="Assets\Models\Environment\Free_Rocks\Standard Assets\Effects\ImageEffects\Scripts\Vortex.cs" />
+    <Compile Include="Assets\Models\Mech\AssultMech\Scripts\CameraFollow.cs" />
+    <Compile Include="Assets\Models\Mech\AssultMech\Scripts\FootSteps.cs" />
+    <Compile Include="Assets\Models\Mech\AssultMech\Scripts\MechHit.cs" />
+    <Compile Include="Assets\Models\Mech\AssultMech\Scripts\MechShoot.cs" />
+    <Compile Include="Assets\Models\Mech\AssultMech\Scripts\MechWalk.cs" />
+    <Compile Include="Assets\Models\Mech\AssultMech\Scripts\Shoot.cs" />
+    <Compile Include="Assets\Models\Weapon\Bullet Casing\FP_Shooting.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
@@ -164,7 +151,8 @@
     <Compile Include="Assets\PostProcessing\Runtime\Utils\GraphicsUtils.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
-    <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
+    <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
+    <Compile Include="Assets\Scripts\Camera\PlayerCamera.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyAttack.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyMovement.cs" />
@@ -198,9 +186,11 @@
     <None Include="Assets\Models\Environment\Free_Rocks\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
     <None Include="Assets\Models\Environment\Free_Rocks\Standard Assets\Effects\TessellationShaders\Shaders\BumpedSpecularSmooth.shader" />
     <None Include="Assets\Models\Environment\Free_Rocks\Standard Assets\Effects\Projectors\Guidelines.txt" />
+    <None Include="Assets\Models\Mech\AssultMech\IMPORTANT.txt" />
     <None Include="Assets\PostProcessing\Resources\Shaders\ScreenSpaceReflection.shader" />
     <None Include="Assets\Models\Environment\Free_Rocks\Standard Assets\Effects\ImageEffects\Shaders\MotionBlur.shader" />
     <None Include="Assets\Models\Environment\Free_Rocks\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBloom.shader" />
+    <None Include="Assets\PostProcessing\Utilities\CustomMotionTexture\Shaders\CustomMotionVectorTexture.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\ACES.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\UberSecondPass.cginc" />
     <None Include="Assets\Models\Environment\Free_Rocks\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\MinMaxReduction.shader" />
@@ -221,6 +211,7 @@
     <None Include="Assets\PostProcessing\Resources\Shaders\FXAA3.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\AmbientOcclusion.shader" />
+    <None Include="Assets\Models\Weapon\FreeMachineGun\Shader\BDCS.shader" />
     <None Include="Assets\Models\Environment\Free_Rocks\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
     <None Include="Assets\Models\Environment\Free_Rocks\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfField34.shader" />
     <None Include="Assets\PostProcessing\Resources\Bluenoise64\LICENSE.txt" />
@@ -269,6 +260,7 @@
     <None Include="Assets\Models\Environment\Free_Rocks\Standard Assets\Effects\ImageEffects\Shaders\SepiaToneEffect.shader" />
     <None Include="Assets\Models\Environment\Free_Rocks\Standard Assets\Effects\ImageEffects\Shaders\TwirlEffect.shader" />
     <None Include="Assets\Models\Environment\Free_Rocks\Standard Assets\Effects\ImageEffects\Shaders\VortexEffect.shader" />
+    <None Include="Assets\Models\Weapon\FreeMachineGun\documentation.txt" />
     <None Include="Assets\Models\Environment\Free_Rocks\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Adaptation.shader" />
     <None Include="Assets\Models\Environment\Free_Rocks\Standard Assets\Effects\ImageEffects\Shaders\NoiseAndGrain.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Bloom.shader" />

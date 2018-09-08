@@ -75,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
 
                 ////　着地していたらアニメーションパラメータと２段階ジャンプフラグをfalse
                 //anim.SetBool("Jump", false);
-                //playerRigidbody.useGravity = true;
+                playerRigidbody.useGravity = true;
 
                 //　レイを飛ばして接地確認の場合は重力だけは働かせておく、前後左右は初期化
             }
@@ -132,16 +132,16 @@ public class PlayerMovement : MonoBehaviour
                 //anim.SetBool("IsWalking", walking);
             }
 
-            ////　ジャンプ
-            //if (Input.GetButtonDown("Jump")
-            //    && !anim.GetCurrentAnimatorStateInfo(0).IsName("Jump")
-            //    && !anim.IsInTransition(0)      //　遷移途中にジャンプさせない条件
-            //)
-            //{
-            //    anim.SetBool("Jump", true);
-            //    movement.y += jumpPower;
-            //    playerRigidbody.useGravity = false;
-            //}
+            //　ジャンプ
+            if (Input.GetButtonDown("Jump")
+                //&& !anim.GetCurrentAnimatorStateInfo(0).IsName("Jump")
+                //&& !anim.IsInTransition(0)      //　遷移途中にジャンプさせない条件
+                )
+            {
+                //anim.SetBool("Jump", true);
+                movement.y += jumpPower;
+                playerRigidbody.useGravity = false;
+            }
         }
 
         Turning();
@@ -167,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(camRay, out floorHit, camRayLength, floorMask))
         {
             Vector3 playerToMouse = floorHit.point - transform.position;
-            playerToMouse.y = 0f;
+            //playerToMouse.y = 0f;
 
             Quaternion newRotation = Quaternion.LookRotation(playerToMouse);
             playerRigidbody.MoveRotation(newRotation);
