@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     int floorMask;
     float camRayLength = 100f;
 
+    bool blnHideState = false;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -84,6 +86,17 @@ public class PlayerMovement : MonoBehaviour
                 movement = new Vector3(0f, movement.y, 0f);
             }
 
+            //if (Input.GetButtonDown("H") && blnHideState == false)
+            //{
+            //    blnHideState = true;
+            //    speed = 3f;
+            //}
+            //else if (Input.GetButton("H") && blnHideState == true)
+            //{
+            //    blnHideState = false;
+            //    speed = 6f;
+            //}
+
             input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
 
             //　方向キーが多少押されている
@@ -102,12 +115,12 @@ public class PlayerMovement : MonoBehaviour
                     out stepHit, LayerMask.GetMask("Floor")))
                 {
 
-                    //　進行方向の地面の角度が指定以下、または昇れる段差より下だった場合の移動処理
-
-                    if (Vector3.Angle(transform.up, stepHit.normal) <= slopeLimit
-                        || (Vector3.Angle(transform.up, stepHit.normal) > slopeLimit
-                            && !Physics.Linecast(transform.position + new Vector3(0f, stepOffset, 0f),
-                            transform.position + new Vector3(0f, stepOffset, 0f) + transform.forward * slopeDistance, LayerMask.GetMask("Floor")))
+                    // 進行方向の地面の角度が指定以下、または昇れる段差より下だった場合の移動処理
+                    if (Vector3.Angle(transform.up, stepHit.normal) <= slopeLimit ||
+                        (Vector3.Angle(transform.up, stepHit.normal) > slopeLimit &&
+                        !Physics.Linecast(transform.position + new Vector3(0f, stepOffset, 0f),
+                        transform.position + new Vector3(0f, stepOffset, 0f) + transform.forward * slopeDistance,
+                        LayerMask.GetMask("Floor")))
                     )
                     {
                         movement = new Vector3(0f, ((Quaternion.FromToRotation(Vector3.up, stepHit.normal) * transform.forward) * speed).y, 0f) + transform.forward * speed;

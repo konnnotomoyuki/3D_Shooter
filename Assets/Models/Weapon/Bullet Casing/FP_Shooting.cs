@@ -18,8 +18,7 @@ public class FP_Shooting : MonoBehaviour {
     }
     private  IEnumerator  Shooting()
     {
-
-             beingHandled = true;
+        beingHandled = true;
 		GameObject cardridge;
 		if (SpawnPositionCar) cardridge = (GameObject)Instantiate(Cardridge, SpawnPositionCar.transform.position + SpawnPositionCar.transform.right, SpawnPositionCar.transform.rotation);
         else  cardridge = (GameObject)Instantiate(Cardridge, SpawnPositionCar.transform.position + SpawnPositionCar.transform.forward, SpawnPositionCar.transform.rotation);        

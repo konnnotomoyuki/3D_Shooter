@@ -13,20 +13,21 @@ public class PlayerWeaponManage : MonoBehaviour
     public GameObject Grenade_Dummy;
     public GameObject Grenade;
     public GameObject GunBarrel;
+    public GameObject ReloadMove;
 
     public int shootableMask;
     public int damagePerShot = 20;
-    private int WeaponType = 0;           // 武器タイプ
-    private int WeaponNum = 2;            // 武器の種類数
-    private const int CartridgeBulletNum = 30;  // 一つのカートリッジに入っている弾の数
-    [SerializeField] private int CurrentBulletNum = 30;    // 現在のカートリッジの弾の数
-    [SerializeField] private int AllBulletNum = 150;       // プレイヤーが所持している弾の総数    
+    private int WeaponType = 0;                // 武器タイプ
+    private int WeaponNum = 2;                 // 武器の種類数
+    public int CartridgeBulletNum = 30;        // 一つのカートリッジに入っている弾の数
+    public int CurrentBulletNum = 30;          // 現在のカートリッジの弾の数
+    public int AllBulletNum = 150;             // プレイヤーが所持している弾の総数
     public float timeBetweenBullets = 0.15f;
     public float range = 100f;
     float timer;
     float effectsDisplayTime = 0.2f;
 
-    private bool CanShootable = true;
+    public bool CanShootable = true;
 
     void Awake()
     {
@@ -35,6 +36,11 @@ public class PlayerWeaponManage : MonoBehaviour
         gunLine = GunBarrel.GetComponent<LineRenderer>();
         gunAudio = GunBarrel.GetComponent<AudioSource>();
         gunLight = GunBarrel.GetComponent<Light>();
+    }
+
+    private void Update()
+    {
+        Attack();
     }
 
     void Attack()
@@ -47,14 +53,16 @@ public class PlayerWeaponManage : MonoBehaviour
             Debug.Log("現在の武器：" + WeaponType);
         }
 
-        if (AllBulletNum <= 0 && CurrentBulletNum == 0)
+        if ((AllBulletNum <= 0 && CurrentBulletNum == 0) || CanShootable == false)
         {
             return;
         }
         else if ((CurrentBulletNum == 0 && AllBulletNum != 0) || (Input.GetKey(KeyCode.R) && AllBulletNum != 0))
         {
             CanShootable = false;
-            StartCoroutine(Reload());
+
+            var parent = this.transform;
+            Instantiate(ReloadMove, parent);
         }
         else if ((WeaponType == 0 && CanShootable == true) || (WeaponType == 1 && Grenade_Dummy == null && CanShootable == true))
         {
@@ -124,33 +132,33 @@ public class PlayerWeaponManage : MonoBehaviour
         CurrentBulletNum--;
     }
 
-    // リロード処理
-    IEnumerator Reload()
-    {
-        if (AllBulletNum + CurrentBulletNum < CartridgeBulletNum)
-        {
-            if (AllBulletNum != 0)
-            {
-                yield return new WaitForSeconds(3.0f);      // 3秒、処理を待機
+    //// リロード処理
+    //IEnumerator Reload()
+    //{
+    //    if (AllBulletNum + CurrentBulletNum < CartridgeBulletNum)
+    //    {
+    //        if (AllBulletNum != 0)
+    //        {
+    //            yield return new WaitForSeconds(3.0f);      // 3秒、処理を待機
 
-                // 弾丸を込められるだけ込める
-                CurrentBulletNum = CurrentBulletNum + AllBulletNum;
-                // AllBulletNumの方は0にする
-                AllBulletNum = 0;
-            }
-        }
-        else if (AllBulletNum + CurrentBulletNum >= CartridgeBulletNum)
-        {
-            yield return new WaitForSeconds(3.0f);      // 3秒、処理を待機
+    //            // 弾丸を込められるだけ込める
+    //            CurrentBulletNum = CurrentBulletNum + AllBulletNum;
+    //            // AllBulletNumの方は0にする
+    //            AllBulletNum = 0;
+    //        }
+    //    }
+    //    else if (AllBulletNum + CurrentBulletNum >= CartridgeBulletNum)
+    //    {
+    //        yield return new WaitForSeconds(3.0f);      // 3秒、処理を待機
 
-            // 何発弾を使ったかを計算
-            int TempBulletNum = CartridgeBulletNum - CurrentBulletNum;
-            // 使った弾分、全体の弾丸から引く
-            AllBulletNum = AllBulletNum - TempBulletNum;
-            // カートリッジ収納分まで弾を回復
-            CurrentBulletNum = CartridgeBulletNum;
-        }
+    //        // 何発弾を使ったかを計算
+    //        int TempBulletNum = CartridgeBulletNum - CurrentBulletNum;
+    //        // 使った弾分、全体の弾丸から引く
+    //        AllBulletNum = AllBulletNum - TempBulletNum;
+    //        // カートリッジ収納分まで弾を回復
+    //        CurrentBulletNum = CartridgeBulletNum;
+    //    }
 
-        CanShootable = true;
-    }
+    //    CanShootable = true;
+    //}
 }
